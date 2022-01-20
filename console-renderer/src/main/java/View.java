@@ -1,4 +1,2 @@
-public class View {
-
-
+public abstract class View {
 }
