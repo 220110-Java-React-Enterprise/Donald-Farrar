@@ -1,0 +1,11 @@
+*.properties
+*.iml
+.idea/
+.target/
+
+        Donald's:
+        <hostname> = db-dcf.chycmm2wnybm.us-east-1.rds.amazonaws.com
+        <port> = 3306
+        <databaseName> = db_project_0_dcf
+        username = admin
+        password = Yosemite9!

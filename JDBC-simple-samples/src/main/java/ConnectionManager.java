@@ -32,6 +32,7 @@ public class ConnectionManager {
         jdbc:mariadb://<hostname>:<port>/<databaseName>?user=<username>&password=<password>
         This is the string we need to use to connect to our database. We will build this string with each of the
         variables filled out and qualified.
+
          */
 
         //try catch block because the things in here are likely to throw exceptions. We could throw these up further, but
