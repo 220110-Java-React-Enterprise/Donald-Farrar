@@ -10,7 +10,7 @@ public class ConnectionManager {
     //this is for keeping a connection object alive and referenced and it will be used by this class
     private static Connection connection;
     //private because no one else should access this field directly - abstraction
-    //static because we will never instantiate an objct of this class, we just use the static functionality
+    //static because we will never instantiate an object of this class, we just use the static functionality
     //Connection is an object that stores and keeps alive a connection to a database
 
     //no args constructor, not really used here
@@ -43,7 +43,7 @@ public class ConnectionManager {
             Properties props = new Properties();
             //the file reader gets the data out of the file, and when we call props.load it loads that data
             //into the properties object
-            FileReader fr = new FileReader("src/main/resources/jdbc.properties");
+            FileReader fr = new FileReader("src/main/resources/connection.properties");
             props.load(fr);
 
 
@@ -55,11 +55,11 @@ public class ConnectionManager {
                     props.getProperty("username") + "&password=" +
                     props.getProperty("password");
 
-            //Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName("org.mariadb.jdbc.Driver");
 
             connection = DriverManager.getConnection(connectionString);
 
-        } catch (IOException | SQLException e) {
+        } catch (IOException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
