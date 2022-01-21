@@ -10,6 +10,11 @@ public class MenuOptions extends View {
         System.out.println("========== Sub Menu ==========");
         System.out.println("Welcome, " + DataStore.getName());
 
+        //view account
+        //withdraw
+        //deposit
+
+
         viewManager.quit();
     }
 }
