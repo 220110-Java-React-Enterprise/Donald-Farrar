@@ -47,6 +47,7 @@ public class ViewManager {
     public void render() {
         System.out.println("PROBLEMS");
         //nextView.renderView();
+        //make sure to navigate away from here!
     }
 
     public Scanner getScanner() {
