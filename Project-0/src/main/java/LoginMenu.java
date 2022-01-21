@@ -7,7 +7,7 @@ public class LoginMenu extends View {
     @Override
     public void renderView() {
         //prompt user
-        System.out.println("========== Main Menu ==========");
+        System.out.println("========== Login Menu ==========");
         System.out.println("Enter username to login: ");
 
         //get input from user
@@ -22,7 +22,7 @@ public class LoginMenu extends View {
         DataStore.setPass(input);
 
         //navigate to next menu
-        viewManager.navigate("SubMenu");
+        viewManager.navigate("Login Menu");
 
     }
 }

@@ -15,7 +15,7 @@ public class ViewManager {
     View nextView;
 
     //making the constructor private to make it a singleton design pattern, has starting values and references
-    private ViewManager(){
+    ViewManager(){
         running = true;
         scanner = new Scanner(System.in);
         viewList = new LinkedList<>();  //change too CustomArray List
@@ -42,12 +42,24 @@ public class ViewManager {
     }
 
 
-    ///////PROBLEM//////////////
-    //i AM IN AN INFINITE LOOP
+
     public void render() {
-        System.out.println("PROBLEMS");
-        //nextView.renderView();
+        System.out.println("LoginMenu =========>");
+
+        System.out.println("1");
+
+        LoginMenu lm = new LoginMenu();
+        lm.renderView();
+
+        System.out.println("2");
+        //navigate method
         //make sure to navigate away from here!
+
+        System.out.println("MenuOptions");
+        lm.renderView();
+        //navigate method
+        //make sure to navigate away from here!
+
     }
 
     public Scanner getScanner() {

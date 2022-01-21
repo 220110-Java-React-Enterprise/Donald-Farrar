@@ -7,7 +7,7 @@ public class MenuOptions extends View {
 
     @Override
     public void renderView() {
-        System.out.println("========== Sub Menu ==========");
+        System.out.println("========== MenuOptions ==========");
         System.out.println("Welcome, " + DataStore.getName());
 
         //view account

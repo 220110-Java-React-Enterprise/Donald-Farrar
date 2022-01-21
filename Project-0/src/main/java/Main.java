@@ -3,17 +3,19 @@ public class Main {
     public static void main(String[] args){
         System.out.println("This is working!");
         ViewManager viewManager = ViewManager.getViewManager();
-        System.out.println("1");
+
+        //ViewManager vm = new ViewManager();
+
         viewManager.registerView(new LoginMenu());
         viewManager.registerView(new MenuOptions());
-        System.out.println("2");
-        viewManager.navigate("MainMenu");
-        System.out.println("3");
+
+        viewManager.navigate("Login Menu");
+
+
         while(viewManager.isRunning()) {
-            System.out.println("4");
             viewManager.render();
+
         }
-        System.out.println("5");
 
     }
 }
