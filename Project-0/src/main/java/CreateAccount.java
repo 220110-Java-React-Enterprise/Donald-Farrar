@@ -1,5 +1,3 @@
-import BankingApp.ViewMenuOptions.ViewAccount;
-
 public class CreateAccount extends ViewAccount {
 
     public CreateAccount() {

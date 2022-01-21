@@ -1,6 +1,4 @@
-package BankingApp.ViewMenuOptions;
-
-public class DepSaving {
+public class DepSaving extends Deposit{
 
     public DepSaving() {
     }

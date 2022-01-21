@@ -1,5 +1,3 @@
-package BankingApp.ViewMenuOptions;
-
 public class ViewAccount extends MenuOptions{
 
     public ViewAccount() {
