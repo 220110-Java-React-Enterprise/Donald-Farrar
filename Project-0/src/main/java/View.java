@@ -5,11 +5,17 @@ public abstract class View {
         return name;
     }
 
-
+    protected Integer userId;
     protected String userName;
     protected String userPassword;
-    protected Integer pin;
+    protected String firstName;
+    protected String lastName;
+    protected String email;
+    protected String address;
     protected ViewManager viewManager;
+
+    protected Integer pin; //not sure I want to use this yet
+
 
     public String getUserName() {
         return userName;
