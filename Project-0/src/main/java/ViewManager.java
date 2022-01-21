@@ -44,18 +44,15 @@ public class ViewManager {
 
 
     public void render() {
-        System.out.println("LoginMenu =========>");
-
-        System.out.println("1");
 
         LoginMenu lm = new LoginMenu();
         lm.renderView();
 
-        System.out.println("2");
+
         //navigate method
         //make sure to navigate away from here!
 
-        System.out.println("MenuOptions");
+        //System.out.println("MenuOptions");
         lm.renderView();
         //navigate method
         //make sure to navigate away from here!

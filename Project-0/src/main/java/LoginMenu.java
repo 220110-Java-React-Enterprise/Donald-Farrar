@@ -1,3 +1,5 @@
+import javax.crypto.CipherInputStream;
+
 public class LoginMenu extends View {
     public LoginMenu() {
         userName = "LoginMenu";
@@ -23,6 +25,7 @@ public class LoginMenu extends View {
 
         //navigate to next menu
         viewManager.navigate("Login Menu");
+
 
     }
 }
