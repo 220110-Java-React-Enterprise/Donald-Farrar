@@ -1,8 +1,3 @@
-package BankingApp;
-import BankingApp.ViewMenuOptions.LoginMenu;
-import BankingApp.ViewMenuOptions.MenuOptions;
-import BankingApp.ViewMenuOptions.ViewManager;
-
 public class Main {
 
     public static void main(String[] args){

@@ -1,6 +1,4 @@
-package BankingApp.ViewMenuOptions;
-
-public class MenuOptions extends View{
+public class MenuOptions extends View {
 
     public MenuOptions(){
         userName = "MenuOptions";

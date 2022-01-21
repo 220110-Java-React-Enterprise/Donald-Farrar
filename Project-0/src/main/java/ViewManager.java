@@ -1,5 +1,3 @@
-package BankingApp.ViewMenuOptions;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -43,8 +41,12 @@ public class ViewManager {
         viewList.add(view);
     }
 
+
+    ///////PROBLEM//////////////
+    //i AM IN AN INFINITE LOOP
     public void render() {
-        nextView.renderView();
+        System.out.println("PROBLEMS");
+        //nextView.renderView();
     }
 
     public Scanner getScanner() {

@@ -1,5 +1,3 @@
-package BankingApp.ViewMenuOptions;
-
 public abstract class View {
 
     protected String name; //going to have to change this to where the name is only showing after the user has logged in

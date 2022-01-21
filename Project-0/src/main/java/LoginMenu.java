@@ -1,5 +1,3 @@
-package BankingApp.ViewMenuOptions;
-
 public class LoginMenu extends View {
     public LoginMenu() {
         userName = "LoginMenu";

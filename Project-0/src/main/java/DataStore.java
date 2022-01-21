@@ -1,5 +1,3 @@
-package BankingApp.ViewMenuOptions;
-
 public class DataStore {
     private static String user;
     private static String pass;
