@@ -24,7 +24,7 @@ public class LoginMenu extends View {
         DataStore.setPass(input);
 
         //navigate to next menu
-        viewManager.navigate("Login Menu");
+        //viewManager.navigate("Login Menu");
 
 
     }
