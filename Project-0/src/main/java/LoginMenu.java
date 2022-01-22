@@ -2,7 +2,7 @@ import javax.crypto.CipherInputStream;
 
 public class LoginMenu extends View {
     public LoginMenu() {
-        userName = "LoginMenu";
+        viewMenu = "LoginMenu";
         viewManager = ViewManager.getViewManager();
     }
 
@@ -15,16 +15,14 @@ public class LoginMenu extends View {
         //get input from user
         String input = viewManager.getScanner().nextLine();
 
-        //preform validation?
 
-        //store this for use later
         DataStore.setUser(input);
 
         System.out.println("Enter password: ");
         DataStore.setPass(input);
 
         //navigate to next menu
-        //viewManager.navigate("Login Menu");
+
 
 
     }

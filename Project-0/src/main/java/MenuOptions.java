@@ -1,7 +1,7 @@
 public class MenuOptions extends View {
 
     public MenuOptions(){
-        userName = "MenuOptions";
+        viewMenu = "MenuOptions";
         viewManager = ViewManager.getViewManager();
     }
 

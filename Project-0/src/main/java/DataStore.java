@@ -2,6 +2,12 @@ public class DataStore {
     private static String user;
     private static String pass;
     private static String name;
+    /*
+    protected String firstName;
+    protected String lastName;
+    protected String email;
+    protected String address;
+*/
 
     public static String getUser() {
         return user;

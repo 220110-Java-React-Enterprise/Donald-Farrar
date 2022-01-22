@@ -1,13 +1,13 @@
 public abstract class View {
 
-    protected String viewName;
+    protected String viewMenu;
     protected ViewManager viewManager;
     protected String userName;
     protected String userPassword;
 
 
-    public String getViewName() {
-        return viewName;
+    public String getMenu() {
+        return viewMenu;
     }
 
     public String getUserName() {
@@ -23,22 +23,4 @@ public abstract class View {
     public abstract void renderView();
 }
 
-//protected String name; //going to have to change this to where the name is only showing after the user has logged in
 
-//    protected Integer userId;
-
-//    protected String firstName;
-//    protected String lastName;
-//    protected String email;
-//    protected String address;
-
-//    protected Integer pin; //not sure I want to use this yet
-
-//    public String getName() {
-//        return name;
-//    }
-
-//
-//    public Integer getUserPin() {
-//        return pin;
-//    }
