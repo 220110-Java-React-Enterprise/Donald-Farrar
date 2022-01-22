@@ -16,8 +16,9 @@ public class LoginMenu extends View {
     public void renderView() {
         //prompt user
         System.out.println("========== Login Menu ==========");
-        System.out.println("Enter username to login: ");
+        System.out.println("Enter username: ");
         System.out.println("UN>"+DataStore.getUser()+"\n");
+        System.out.println("Enter password: ");
         System.out.println("PW>"+DataStore.getPass()+"\n");
         String input = viewManager.getScanner().nextLine();
 

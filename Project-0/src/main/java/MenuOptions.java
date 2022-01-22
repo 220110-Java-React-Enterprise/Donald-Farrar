@@ -1,4 +1,4 @@
-public class MenuOptions extends View {
+public class MenuOptions extends LoginMenu {
 
     public MenuOptions(){
         viewMenu = "MenuOptions";
