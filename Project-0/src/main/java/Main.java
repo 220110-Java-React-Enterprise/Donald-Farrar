@@ -8,8 +8,8 @@ public class Main {
         viewManager.registerView(new LoginMenu());
         viewManager.registerView(new MenuOptions());
 
-        viewManager.navigate("Login Menu");
-        viewManager.navigate("Menu Options");
+        viewManager.navigate("LoginMenu");
+
 
 
         while(viewManager.isRunning()) {
