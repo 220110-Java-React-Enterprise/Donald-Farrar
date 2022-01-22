@@ -1,0 +1,1 @@
+My view manager logic was off. I was trying to say that if pass and name are true the render the next view. This is not what I want to do when rendering the next view. What I want is to render the next view when the view menu option different.

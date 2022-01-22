@@ -7,8 +7,6 @@ public class ViewManager {
     private static ViewManager viewManager;
     private boolean running;
     private final Scanner scanner;
-
-
     //Adapt Custom Array List here
     //change this when finished with the arrayList assignment
     List<View> viewList;
@@ -19,7 +17,6 @@ public class ViewManager {
         running = true;
         scanner = new Scanner(System.in);
         viewList = new LinkedList<>();  //change too CustomArray List
-
     }
     public static ViewManager getViewManager(){
         if(viewManager == null) {
@@ -30,7 +27,9 @@ public class ViewManager {
 
     public Object navigate(String destination) {
         for(View view : viewList) {
-            if(view.userName.equals(destination) && view.userPassword.equals(destination)) {
+            //System.out.println("1");
+            if(view.viewMenu.equals(destination)) {
+                //System.out.println("2");
                 nextView = view;
             }
         }
@@ -41,20 +40,12 @@ public class ViewManager {
         viewList.add(view);
     }
 
-
-
     public void render() {
-
         LoginMenu lm = new LoginMenu();
         lm.renderView();
 
-
-        //navigate method
-        //make sure to navigate away from here!
-
         MenuOptions mo = new MenuOptions();
         mo.renderView();
-
     }
 
     public Scanner getScanner() {

@@ -1,5 +1,3 @@
-import javax.crypto.CipherInputStream;
-
 public class LoginMenu extends View {
     public LoginMenu() {
         viewMenu = "LoginMenu";
@@ -22,8 +20,6 @@ public class LoginMenu extends View {
         DataStore.setPass(input);
 
         //navigate to next menu
-
-
 
     }
 }
