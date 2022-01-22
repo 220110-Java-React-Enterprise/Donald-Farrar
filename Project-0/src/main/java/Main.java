@@ -10,6 +10,7 @@ public class Main {
         viewManager.registerView(new MenuOptions());
 
         viewManager.navigate("Login Menu");
+        viewManager.navigate("Menu Options");
 
 
         while(viewManager.isRunning()) {

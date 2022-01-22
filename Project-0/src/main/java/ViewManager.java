@@ -52,10 +52,8 @@ public class ViewManager {
         //navigate method
         //make sure to navigate away from here!
 
-        //System.out.println("MenuOptions");
-        lm.renderView();
-        //navigate method
-        //make sure to navigate away from here!
+        MenuOptions mo = new MenuOptions();
+        mo.renderView();
 
     }
 
