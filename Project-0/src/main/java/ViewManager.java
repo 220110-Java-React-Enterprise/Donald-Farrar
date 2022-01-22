@@ -27,9 +27,7 @@ public class ViewManager {
 
     public Object navigate(String destination) {
         for(View view : viewList) {
-            //System.out.println("1");
             if(view.viewMenu.equals(destination)) {
-                //System.out.println("2");
                 nextView = view;
             }
         }
