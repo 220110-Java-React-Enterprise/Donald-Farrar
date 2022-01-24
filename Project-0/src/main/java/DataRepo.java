@@ -7,7 +7,7 @@ public class DataRepo implements DataSourceCRUD<DataStore>{
     private final Connection connection;
 
     public DataRepo() {
-        connection = Connection.getConnection();
+        connection = ConnectionManager.getConnection();
     }
 
     @Override
@@ -15,16 +15,18 @@ public class DataRepo implements DataSourceCRUD<DataStore>{
         //JDBC logic here
 
         try {
-            String sql = "INSERT INTO associates (associate_id, first_name, last_name, age) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO associates (associate_id, userName, password, first_name, last_name, email, address) VALUES (?,?,?,?)";
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setInt(1, model.getId());
-            pstmt.setString(2, model.getFirstName());
-            pstmt.setString(3, model.getLastName());
-            pstmt.setString(4, model.getEmail());
-            pstmt.setString(5, model.getAddress());
+            pstmt.setString(2, model.getUserName());
+            pstmt.setString(3, model.getPassword());
+            pstmt.setString(4, model.getFirstName());
+            pstmt.setString(5, model.getLastName());
+            pstmt.setString(6, model.getEmail());
+            pstmt.setString(7, model.getAddress());
 
 
-            pstmt.executeUpdate();
+            pstmt.execute();
 
 
         } catch (SQLException e) {
@@ -56,5 +58,15 @@ public class DataRepo implements DataSourceCRUD<DataStore>{
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public DataStore update(DataStore dataStore) {
+        return null;
+    }
+
+    @Override
+    public void delete(Integer id) {
+
     }
 }

@@ -8,8 +8,8 @@ public class MenuOptions extends View {
     @Override
     public void renderView() {
         System.out.println("========== Menu Options ==========");
-        DataStore.getUser();
-        DataStore.getPass();
+        DataStore.getUserName();
+        DataStore.getPassword();
         System.out.println(DataStore.getFirstName() + " " + DataStore.getLastName() + " Select from the options below: ");
         System.out.println("1. View Accounts ");
         System.out.println("2. Withdraw ");

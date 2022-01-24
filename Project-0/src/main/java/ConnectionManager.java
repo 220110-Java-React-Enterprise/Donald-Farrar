@@ -5,13 +5,13 @@ import java.sql.DriverManager;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class Connection {
+public class ConnectionManager {
     //referencing to the connection object, this allows us to connect to the database
     //this is private so nobody is able to access it, this is also the use of abstraction
     //we make this static, because it will never be instantiated
     private static Connection connection;
 
-    private Connection() {
+    private ConnectionManager() {
 
     }
     //getting the connection above
@@ -24,7 +24,7 @@ public class Connection {
     }
 
 
-    private static java.sql.Connection connect() {
+    private static Connection connect() {
         //connection logic here
         /*
         jdbc:mariadb://<hostname>:<port>/<databaseName>?user=<username>&password=<password>

@@ -1,8 +1,8 @@
 public class DataStore {
 
     private Integer id;
-    private static String user;
-    private static String pass;
+    private static String userName;
+    private static String password;
     private static String firstName;
     private static String lastName;
     private static String email;
@@ -14,8 +14,10 @@ public class DataStore {
         this.id = id;
     }
 
-    public DataStore(Integer id, String firstName, String lastName, String email, String password){
+    public DataStore(Integer id, String firstName, String lastName, String email, String user, String pass){
         this.id = id;
+        this.userName = user;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -53,16 +55,16 @@ public class DataStore {
     public static void setAddress(String address) {
         DataStore.address = address;
     }
-    public static String getUser() {
-        return user;
+    public static String getUserName() {
+        return userName;
     }
-    public static void setUser(String u) {
-        user = u;
+    public static void setUserName(String u) {
+        userName = u;
     }
-    public static String getPass() {
-        return pass;
+    public static String getPassword() {
+        return password;
     }
-    public static void setPass(String p) {
-        pass = p;
+    public static void setPassword(String p) {
+        password = p;
     }
 }

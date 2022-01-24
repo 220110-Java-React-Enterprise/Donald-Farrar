@@ -10,19 +10,19 @@ public class LoginMenu extends View {
         //prompt user
         System.out.println("========== Login Menu ==========");
         System.out.println("Enter username: ");
-        System.out.println("UN>"+DataStore.getUser()+"\n");
+        System.out.println("UN>"+DataStore.getUserName()+"\n");
         System.out.println("Enter password: ");
-        System.out.println("PW>"+DataStore.getPass()+"\n");
+        System.out.println("PW>"+DataStore.getPassword()+"\n");
         String input = viewManager.getScanner().nextLine();
 
-        if(DataStore.getUser()!=null && DataStore.getPass()==null) {
-            DataStore.setPass(input);
+        if(DataStore.getUserName()!=null && DataStore.getPassword()==null) {
+            DataStore.setPassword(input);
             //navigate to next menu
             viewManager.navigate("Menu Options");
         }
 
-        if(DataStore.getUser()==null)
-            DataStore.setUser(input);
+        if(DataStore.getUserName()==null)
+            DataStore.setUserName(input);
 
 
 
