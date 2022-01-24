@@ -1,11 +1,15 @@
-public class Withdraw {
+public class Withdraw extends View{
 
     public Withdraw() {
+        //navigating to the different screens
+        viewMenu = "Withdraw";
+        viewManager = viewManager.getViewManager();
     }
 
 
-    void withdrawOptions(){
-        System.out.println("I am in the withdraw parent class!");
+    @Override
+    public void renderView() {
+        System.out.println("Inside the withdraw screen");
     }
 
 }

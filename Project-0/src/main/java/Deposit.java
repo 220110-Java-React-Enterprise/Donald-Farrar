@@ -1,9 +1,15 @@
-public class Deposit extends MenuOptions{
+public class Deposit extends View{
 
     public Deposit() {
+        //navigating to the different screens
+        viewMenu = "Withdraw";
+        viewManager = viewManager.getViewManager();
     }
 
-    void applyDeposit(){
-        System.out.println("Money Deposit!");
+
+    @Override
+    public void renderView() {
+        System.out.println("Inside the deposit screen");
     }
+
 }

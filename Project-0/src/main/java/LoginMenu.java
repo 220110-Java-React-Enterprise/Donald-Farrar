@@ -1,16 +1,9 @@
 public class LoginMenu extends View {
 
-
-
-    private int stage;
-
     public LoginMenu() {
-        viewMenu = "LoginMenu";
+        viewMenu = "Login Menu";
         viewManager = ViewManager.getViewManager();
     }
-
-
-
 
     @Override
     public void renderView() {
@@ -22,14 +15,17 @@ public class LoginMenu extends View {
         System.out.println("PW>"+DataStore.getPass()+"\n");
         String input = viewManager.getScanner().nextLine();
 
-
-
         if(DataStore.getUser()!= null && DataStore.getPass()==null)
             DataStore.setPass(input);
 
         if(DataStore.getUser()==null)
             DataStore.setUser(input);
         //navigate to next menu
+        viewManager.navigate("Menu Options");
 
+
+       // viewManager.quit();
+
+        //NEEDS TO GET OUT OF THIS LOOP THAT KEEPS ASKING FOR USER AND PASS AGAIN AND BE ABLE TO NAVIGATE TO THE MENU OPTIONS PAGE FROM HERE
     }
 }

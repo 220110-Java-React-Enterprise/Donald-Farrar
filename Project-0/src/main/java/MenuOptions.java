@@ -1,7 +1,7 @@
 public class MenuOptions extends LoginMenu {
 
     public MenuOptions(){
-        viewMenu = "MenuOptions";
+        viewMenu = "Menu Options";
         viewManager = ViewManager.getViewManager();
     }
 
@@ -10,17 +10,28 @@ public class MenuOptions extends LoginMenu {
         System.out.println("========== Menu Options ==========");
         DataStore.getUser();
         DataStore.getPass();
-        System.out.println("Welcome, " + DataStore.getName());
+        System.out.println(DataStore.getName() + " Select from the options below: ");
         System.out.println("1. View Accounts ");
         System.out.println("2. Withdraw ");
         System.out.println("3. Deposit");
+        System.out.println("4. Exit");
 
+        String input = viewManager.getScanner().nextLine();
 
-        //view account
-        //withdraw
-        //deposit
-
-
+        switch(input){
+            case "1":
+                viewManager.navigate("View Accounts");
+                break;
+            case "2":
+                viewManager.navigate("Withdraw");
+                break;
+            case "3":
+                viewManager.navigate("Deposit");
+                break;
+            case "4":
+                viewManager.navigate("Welcome Screen");
+                break;
+        }
         viewManager.quit();
     }
 }

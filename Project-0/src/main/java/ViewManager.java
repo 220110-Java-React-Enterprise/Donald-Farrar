@@ -31,32 +31,25 @@ public class ViewManager {
         for (View view : viewList) {
             if (view.viewMenu.equals(destination)) {
                 nextView = view;
-
             }
         }
-
-
-
     }
 
     public void registerView(View view) {
         viewList.add(view);
     }
-
     public void render() {
 
         nextView.renderView();
 
     }
-
     public Scanner getScanner() {
         return scanner;
     }
-
     public void quit() {
+        scanner.close(); //close because it is not being used anymore
         running = false;
     }
-
     public boolean isRunning() {
         return running;
     }
