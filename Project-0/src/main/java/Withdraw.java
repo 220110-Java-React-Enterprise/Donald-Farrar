@@ -10,5 +10,6 @@ public class Withdraw extends View{
     @Override
     public void renderView() {
         System.out.println("Inside the withdraw screen");
+        viewManager.quit();
     }
 }

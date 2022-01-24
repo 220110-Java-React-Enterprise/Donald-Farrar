@@ -20,7 +20,7 @@ public class MenuOptions extends View {
 
         switch(input){
             case "1":
-                viewManager.navigate("View Accounts");
+                viewManager.navigate("Account View");
                 break;
             case "2":
                 viewManager.navigate("Withdraw");
@@ -31,7 +31,10 @@ public class MenuOptions extends View {
             case "4":
                 viewManager.navigate("Welcome Screen");
                 break;
+            default: System.out.println("Please select a valid option");
+                //quit the input
+                viewManager.quit();
         }
-        viewManager.quit();
+        //viewManager.quit();
     }
 }

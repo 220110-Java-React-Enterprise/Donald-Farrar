@@ -8,7 +8,11 @@ public class CreateAccount extends View {
 
     @Override
     public void renderView() {
-        System.out.println("Display Created Account");
+        //prompt user
+        System.out.println("===== Create Account =====");
+        System.out.println("Enter your Email Address: ");
+
+        String input = viewManager.getScanner().nextLine();
         viewManager.quit();
     }
 }

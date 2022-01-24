@@ -7,6 +7,7 @@ public class AccountView extends MenuOptions{
 
     @Override
     public void renderView() {
-        System.out.println("Display AccountView");
+        System.out.println("Display Accounts");
+        viewManager.quit();
     }
 }

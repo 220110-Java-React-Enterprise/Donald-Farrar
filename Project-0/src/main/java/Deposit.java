@@ -2,7 +2,7 @@ public class Deposit extends View{
 
     public Deposit() {
         //navigating to the different screens
-        viewMenu = "Withdraw";
+        viewMenu = "Deposit";
         viewManager = viewManager.getViewManager();
     }
 
@@ -10,6 +10,7 @@ public class Deposit extends View{
     @Override
     public void renderView() {
         System.out.println("Inside the deposit screen");
+        viewManager.quit();
     }
 
 }

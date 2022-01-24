@@ -5,6 +5,7 @@ public class Main {
         ViewManager viewManager = ViewManager.getViewManager();
 
 
+        //This shows what view the user is on to perform their desired task
         viewManager.registerView(new WelcomeScreen());
         viewManager.registerView(new CreateAccount());
         viewManager.registerView(new LoginMenu());
@@ -14,10 +15,6 @@ public class Main {
         viewManager.registerView(new Deposit());
 
         viewManager.navigate("Welcome Screen");
-        //viewManager.navigate("Login Menu");
-        //viewManager.navigate("Menu Options");
-
-
 
         while(viewManager.isRunning()) {
             viewManager.render();
