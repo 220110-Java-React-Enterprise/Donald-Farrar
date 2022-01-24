@@ -15,13 +15,15 @@ public class LoginMenu extends View {
         System.out.println("PW>"+DataStore.getPass()+"\n");
         String input = viewManager.getScanner().nextLine();
 
-        if(DataStore.getUser()!= null && DataStore.getPass()==null)
+        if(DataStore.getUser()!= null && DataStore.getPass()==null) {
             DataStore.setPass(input);
+            viewManager.navigate("Menu Options");
+        }
 
         if(DataStore.getUser()==null)
             DataStore.setUser(input);
         //navigate to next menu
-        viewManager.navigate("Menu Options");
+        //viewManager.navigate("Menu Options");
 
 
        // viewManager.quit();

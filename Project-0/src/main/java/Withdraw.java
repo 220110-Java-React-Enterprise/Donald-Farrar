@@ -11,5 +11,4 @@ public class Withdraw extends View{
     public void renderView() {
         System.out.println("Inside the withdraw screen");
     }
-
 }

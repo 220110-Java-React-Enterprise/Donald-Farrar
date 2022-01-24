@@ -9,5 +9,6 @@ public class CreateAccount extends View {
     @Override
     public void renderView() {
         System.out.println("Display Created Account");
+        viewManager.quit();
     }
 }
