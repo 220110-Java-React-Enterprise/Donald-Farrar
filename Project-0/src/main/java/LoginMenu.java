@@ -17,13 +17,14 @@ public class LoginMenu extends View {
 
         if(DataStore.getUser()!= null && DataStore.getPass()==null) {
             DataStore.setPass(input);
+            //navigate to next menu
             viewManager.navigate("Menu Options");
         }
 
         if(DataStore.getUser()==null)
             DataStore.setUser(input);
-        //navigate to next menu
-        //viewManager.navigate("Menu Options");
+
+
 
 
        // viewManager.quit();

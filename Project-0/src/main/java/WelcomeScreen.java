@@ -9,11 +9,10 @@ public class WelcomeScreen extends View {
     }
 
     @Override
-
     public void renderView(){
         System.out.println("Welcome, ");
-        System.out.println("Login: ");
-        System.out.println("Create new account: ");
+        System.out.println("1. Login: ");
+        System.out.println("2. Create new account: ");
 
         //receive input
         String input = viewManager.getScanner().nextLine();

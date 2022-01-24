@@ -1,4 +1,4 @@
-public class MenuOptions extends LoginMenu {
+public class MenuOptions extends View {
 
     public MenuOptions(){
         viewMenu = "Menu Options";
@@ -10,7 +10,7 @@ public class MenuOptions extends LoginMenu {
         System.out.println("========== Menu Options ==========");
         DataStore.getUser();
         DataStore.getPass();
-        System.out.println(DataStore.getName() + " Select from the options below: ");
+        System.out.println(DataStore.getFirstName() + " " + DataStore.getLastName() + " Select from the options below: ");
         System.out.println("1. View Accounts ");
         System.out.println("2. Withdraw ");
         System.out.println("3. Deposit");
