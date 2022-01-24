@@ -15,24 +15,20 @@ public class DataRepo implements DataSourceCRUD<DataStore>{
         //JDBC logic here
 
         try {
-            String sql = "INSERT INTO associates (associate_id, userName, password, first_name, last_name, email, address) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO associates (userName, password, first_name, last_name, email, address) VALUES (?,?,?,?,?,?)";//question marks imply that something needs to be here
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1, model.getId());
-            pstmt.setString(2, model.getUserName());
-            pstmt.setString(3, model.getPassword());
-            pstmt.setString(4, model.getFirstName());
-            pstmt.setString(5, model.getLastName());
-            pstmt.setString(6, model.getEmail());
-            pstmt.setString(7, model.getAddress());
-
+//            pstmt.setInt(1, model.getId());
+            pstmt.setString(1, model.getUserName());
+            pstmt.setString(2, model.getPassword());
+            pstmt.setString(3, model.getFirstName());
+            pstmt.setString(4, model.getLastName());
+            pstmt.setString(5, model.getEmail());
+            pstmt.setString(6, model.getAddress());
 
             pstmt.execute();
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return model;
     }
 
@@ -48,9 +44,12 @@ public class DataRepo implements DataSourceCRUD<DataStore>{
             DataStore model = new DataStore();
             while(rs.next()) {
                 model.setId(rs.getInt("associate_id"));
-                model.setFirstName(rs.getString("first_name"));
+                model.setFirstName(rs.getString("userName"));
+                model.setLastName(rs.getString("password"));
+                model.setLastName(rs.getString("first_name"));
                 model.setLastName(rs.getString("last_name"));
-
+                model.setLastName(rs.getString("email"));
+                model.setLastName(rs.getString("address"));
             }
 
             return model;

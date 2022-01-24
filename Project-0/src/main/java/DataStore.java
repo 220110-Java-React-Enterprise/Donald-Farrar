@@ -14,9 +14,9 @@ public class DataStore {
         this.id = id;
     }
 
-    public DataStore(Integer id, String firstName, String lastName, String email, String user, String pass){
+    public DataStore(Integer id, String firstName, String lastName, String email, String userName, String password){
         this.id = id;
-        this.userName = user;
+        this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
