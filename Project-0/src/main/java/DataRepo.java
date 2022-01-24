@@ -20,7 +20,9 @@ public class DataRepo implements DataSourceCRUD<DataStore>{
             pstmt.setInt(1, model.getId());
             pstmt.setString(2, model.getFirstName());
             pstmt.setString(3, model.getLastName());
-            //pstmt.setInt(4, model.getAge());
+            pstmt.setString(4, model.getEmail());
+            pstmt.setString(5, model.getAddress());
+
 
             pstmt.executeUpdate();
 
@@ -46,7 +48,7 @@ public class DataRepo implements DataSourceCRUD<DataStore>{
                 model.setId(rs.getInt("associate_id"));
                 model.setFirstName(rs.getString("first_name"));
                 model.setLastName(rs.getString("last_name"));
-               // model.setAge(rs.getInt("age"));
+
             }
 
             return model;
@@ -55,3 +57,4 @@ public class DataRepo implements DataSourceCRUD<DataStore>{
         }
         return null;
     }
+}
