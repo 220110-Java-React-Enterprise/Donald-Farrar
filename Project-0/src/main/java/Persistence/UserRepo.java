@@ -1,7 +1,9 @@
 package Persistence;
 
 import Utils.ConnectionManager;
+import org.mariadb.jdbc.internal.com.read.resultset.SelectResultSet;
 
+import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,7 +37,27 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
 
     @Override
     public UserModel read(Integer id) throws SQLException, IOException {
-        return null;
+        //this can never return more than one thing because the user_id is unique
+        String sql = "SELECT * FROM users WHERE user_id = ?";
+        PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
+        pstmt.setInt(1, id);
+
+        ResultSet rs = pstmt.executeQuery();
+        //if we have the thing marshal it into a UserModel obj //linkedList
+        UserModel user = new UserModel();
+        if(rs.next()){
+            //if there is one now we read the user_id
+            user.setUserId(rs.getInt("user_id"));
+            user.setUserName(rs.getString("userName"));
+            user.setPassword(rs.getString("password"));
+            user.setfName(rs.getString("fName"));
+            user.setlName(rs.getString("lName"));
+            user.setAddress(rs.getString("address"));
+            user.setUserId(rs.getInt("zip"));
+            return user;
+        } else {
+            return null;
+        }
     }
 
     @Override
