@@ -14,7 +14,7 @@ public class ConnectionManager {
     private ConnectionManager(){
     }
 
-    public static Connection getConnection(){
+    public static Connection getConnection() throws SQLException, IOException {
         if(connection == null){
             connection = connect();
         }
