@@ -109,4 +109,16 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
 
     //this is not implementing the CRUD interface
     //the code below is how to create a login
+    public boolean authenticate(String userName, String password) throws SQLException, IOException {
+        String sql = "SELECT * FROM users WHERE username = ?";
+        PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
+        pstmt.setString(1, userName);
+        ResultSet rs = pstmt.executeQuery();
+        //this if/statement implys that if the password that was inputted matching the one in the db && there is a next return true
+        if(rs.next() && rs.getString("password").equals(password)){
+            return true;
+        }
+        //if we don't have a next that means username was not found, return false
+        return false;
+    }
 }

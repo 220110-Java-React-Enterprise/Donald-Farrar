@@ -13,6 +13,12 @@ public class UserModel {
     public UserModel() {
     }
 
+    //this constructor is for the authenticate method on the UserRepo for login access
+    public UserModel(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
     public UserModel(Integer userId, String userName, String password, String fName, String lName, String address, Integer zip) {
         this.userId = userId;
         this.userName = userName;
