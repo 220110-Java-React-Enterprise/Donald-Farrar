@@ -62,11 +62,51 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
 
     @Override
     public UserModel update(UserModel userModel) throws SQLException, IOException {
+        String sql = "UPDATE users SET userName = ?, password = ?, fName = ?, lName = ?, address = ?, zip = ? WHERE user_id = ?";
+        PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
+        //we are setting the data by parameterizing it
+        //following the order of the sql string they are considered parameters. That's how the below code works
+        pstmt.setString(1, userModel.getUserName());
+        pstmt.setString(2, userModel.getPassword());
+        pstmt.setString(3, userModel.getfName());
+        pstmt.setString(4, userModel.getlName());
+        pstmt.setString(5, userModel.getAddress());
+        pstmt.setInt(6, userModel.getZip());
+        pstmt.setInt(7, userModel.getUserId());
+
+        pstmt.executeUpdate();
+        //verify the data did get back correctly.
+        String verify = "SELECT * FROM users WHERE user_id = ?";
+        //second prepared statement
+        PreparedStatement verifyStat = ConnectionManager.getConnection().prepareStatement(verify);
+        pstmt.setInt(1, userModel.getUserId());
+        //compare this with the other times you have used ResultSet in your CRUD code above
+        ResultSet rs = verifyStat.executeQuery();
+
+        if(rs.next()){
+            UserModel verifiedUserModel = new UserModel();
+            //marshal everything into the above instantiation
+            //gotta get the name of the column that we are fetching which is user_id and set it with the obj
+            verifiedUserModel.setUserId(rs.getInt("user_id"));
+            verifiedUserModel.setUserName(rs.getString("userName"));
+            verifiedUserModel.setPassword(rs.getString("password"));
+            verifiedUserModel.setfName(rs.getString("fName"));
+            verifiedUserModel.setlName(rs.getString("lName"));
+            verifiedUserModel.setAddress(rs.getString("address"));
+            verifiedUserModel.setZip(rs.getInt("zip"));
+            return verifiedUserModel;
+        }
         return null;
     }
 
     @Override
     public void delete(Integer id) throws SQLException, IOException {
-
+        String sql = "DELETE * FROM users where user_id = ?";
+        PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
+        pstmt.setInt(1, id);
+        pstmt.executeUpdate();
     }
+
+    //this is not implementing the CRUD interface
+    //the code below is how to create a login
 }
