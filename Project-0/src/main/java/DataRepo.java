@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DataRepo implements DataSourceCRUD<DataStore>{
     private final Connection connection;
@@ -11,13 +8,13 @@ public class DataRepo implements DataSourceCRUD<DataStore>{
     }
 
     @Override
-    public DataStore create(DataStore model) {
+    public Integer create(DataStore model) {
         //JDBC logic here
 
         try {
             String sql = "INSERT INTO associates (userName, password, first_name, last_name, email, address) VALUES (?,?,?,?,?,?)";//question marks imply that something needs to be here
-            PreparedStatement pstmt = connection.prepareStatement(sql);
-//            pstmt.setInt(1, model.getId());
+            PreparedStatement pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // second parameter lets us know what the auto-increment id is
+            //next line of code parameterized this create method
             pstmt.setString(1, model.getUserName());
             pstmt.setString(2, model.getPassword());
             pstmt.setString(3, model.getFirstName());
@@ -25,14 +22,22 @@ public class DataRepo implements DataSourceCRUD<DataStore>{
             pstmt.setString(5, model.getEmail());
             pstmt.setString(6, model.getAddress());
 
-            pstmt.execute();
-        } catch (SQLException e) {
+            pstmt.executeUpdate();
+            //Create an obj for then below ask for the result set
+            ResultSet rs = pstmt.getResultSet();
+            rs.next();
+
+            //this is going to set the customer id
+            Integer id;
+            //return next if there is a new id
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+    } catch (SQLException e) {
             e.printStackTrace();
         }
-        return model;
-    }
 
-    @Override
+        @Override
     public DataStore read(Integer id) {
         try {
             String sql = "SELECT * FROM associates WHERE associate_id = ?";
