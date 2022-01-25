@@ -30,7 +30,6 @@ public class CustomLinkedList<E> implements CustomListInterface<E>, Iterable<E>{
         size++;
     }
 
-
 //    /**
 //     * Adds an object to the linked list at the specified index, splicing into place
 //     * and effectively shifting all further objects
@@ -51,42 +50,75 @@ public class CustomLinkedList<E> implements CustomListInterface<E>, Iterable<E>{
     public E get(int index) {
         //Implement this method
         Node<E> cursor = head;
-        for (int i = 0; i < index; i++){ //this says everytime we iterator through we start at zero and if there is another node we move on to it
+        for(int i = 0; i < index; i++){ //this says everytime we iterator through we start at zero and if there is another node we move on to it
             // everytime time we advance we move the cursor
             cursor = cursor.next;
         }
         return cursor.obj;  //cursor.obj is the cursor payload stored in the node
     }
 
-//    /**
-//     * Clears the linked list by setting head and tail to null.
-//     *
-//     */
-//    @Override
-//    public void clear() {
-//        //Implement this method
-//    }
+    /**
+     * Clears the linked list by setting head and tail to null.
+     *
+     */
+    @Override
+    public void clear() {
+        while(this.size>0)
+            this.remove(0);
+        this.head = null;
+        this.tail = null;
+    }
 
-//    /**
-//     * Searches linked list for an object using Object.equals() to compare
-//     * returns the index of the first matching object found. -1 if not found.
-//     * @param t the object to match
-//     * @return index of the first matching object found. -1 if not found
-//     */
-//    @Override
-//    public int contains(T t) {
-//        //Implement this method
-//    }
+    /**
+     * Searches linked list for an object using Object.equals() to compare
+     * returns the index of the first matching object found. -1 if not found.
+     * @param e the object to match
+     * @return index of the first matching object found. -1 if not found
+     */
+    @Override
+    public boolean contains(E e) {
+        //Implement this method
+        Node<E> cursor = head;
+        for(int i = 0; i <this.size(); i++){
+            if(cursor == null){
+                return false;
+            }
+            if(cursor.obj.equals(e)){
+                return true;
+            }
+            cursor = cursor.next;
+        }
+        return false;
+    }
 
-//    /**
-//     * removes an object from linked list and splices the two resulting separate lists
-//     * together.
-//     * @param index the location of the object to be removed.
-//     */
-//    @Override
-//    public void remove(int index) {
-//        //Implement this method
-//    }
+
+    /**
+     * removes an object from linked list and splices the two resulting separate lists
+     * together.
+     * @param index the location of the object to be removed.
+     */
+    @Override
+    public void remove(int index) {
+        Node<E> cursor = head;
+        Node<E> prev = null;
+        Node<E> next = null;
+        for (int i = 0; i < index; i++) {
+            if (i != 0)
+                prev = cursor;
+            cursor = cursor.next;
+            if (i <= index)
+                next = cursor.next;
+        }
+        if (cursor == this.head)
+            this.head = next;
+        if (cursor == this.tail)
+            this.tail = prev;
+
+        prev.next = next;
+        next.prev = prev;
+        this.size--;
+    }
+
 
 
     /**

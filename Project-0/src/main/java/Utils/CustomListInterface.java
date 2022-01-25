@@ -17,13 +17,13 @@ public interface CustomListInterface<E> {
     E get(int index);
 
     //remove element at specified index, and then shift the remaining elements to close the gap.
-    //void remove(int index);
+    void remove(int index);
 
     //remove all elements from the collection
-    //void clear();
+    void clear();
 
     //check if collection contains this item (returning the index of where it can be found)
     //if you really wanted to you could return a bool instead.
-    //int contains(E e);
+    boolean contains(E e);
 
 }
