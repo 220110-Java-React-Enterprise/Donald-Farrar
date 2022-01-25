@@ -85,4 +85,5 @@ public class UserModel {
     public void setZip(Integer zip) {
         this.zip = zip;
     }
+
 }

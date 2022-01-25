@@ -1,9 +1,7 @@
 package Persistence;
 
 import Utils.ConnectionManager;
-import org.mariadb.jdbc.internal.com.read.resultset.SelectResultSet;
 
-import javax.xml.transform.Result;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -72,7 +70,6 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
         pstmt.setString(4, userModel.getlName());
         pstmt.setString(5, userModel.getAddress());
         pstmt.setInt(6, userModel.getZip());
-        pstmt.setInt(7, userModel.getUserId());
 
         pstmt.executeUpdate();
         //verify the data did get back correctly.
