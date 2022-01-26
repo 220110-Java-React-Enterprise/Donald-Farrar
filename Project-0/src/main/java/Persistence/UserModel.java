@@ -8,6 +8,7 @@ public class UserModel {
     private String lName;
     private String address;
     private Integer zip;
+    private Integer accountId;
 
     //Constructor
     public UserModel() {
@@ -15,6 +16,13 @@ public class UserModel {
 
     //this constructor is for the authenticate method on the UserRepo for login access
     public UserModel(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
+    //this contructors helps with the authentication
+    public UserModel(Integer userId, String userName, String password) {
+        this.userId = userId;
         this.userName = userName;
         this.password = password;
     }
@@ -27,6 +35,7 @@ public class UserModel {
         this.lName = lName;
         this.address = address;
         this.zip = zip;
+        this.accountId = accountId;
     }
 
     //Getters & Setters
@@ -85,5 +94,11 @@ public class UserModel {
     public void setZip(Integer zip) {
         this.zip = zip;
     }
+    public Integer getAccountId() {
+        return accountId;
+    }
 
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
 }
