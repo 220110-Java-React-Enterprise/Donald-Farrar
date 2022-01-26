@@ -73,7 +73,7 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
         pstmt.setString(4, userModel.getlName());
         pstmt.setString(5, userModel.getAddress());
         pstmt.setInt(6, userModel.getZip());
-        pstmt.setInt(7, userModel.getAccountId());
+        pstmt.setInt(7, userModel.getAccountId());//FK
 
         pstmt.executeUpdate();
         //verify the data did get back correctly.

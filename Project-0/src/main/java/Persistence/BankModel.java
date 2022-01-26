@@ -1,31 +1,18 @@
 package Persistence;
 
 public class BankModel {
-
     private Integer accountId;
-    private String checking;
-    private String savings;
-    private Integer userId;
-    //private String accountType; //= "checking" or "savings"
+    private String accountType;
+    private Double balance;
 
     public BankModel() {
     }
 
-    //constructor is for testing so far
-
-    public BankModel(String checking, String savings) {
-        this.checking = checking;
-        this.savings = savings;
-
-    }
-    public BankModel(Integer accountId, String checking, String savings, Integer user_id) {
+    public BankModel(Integer accountId, String accountType, Double balance) {
         this.accountId = accountId;
-        this.checking = checking;
-        this.savings = savings;
-        this.userId = userId;
+        this.accountType = accountType;
+        this.balance = balance;
     }
-
-
 
     public Integer getAccountId() {
         return accountId;
@@ -35,27 +22,19 @@ public class BankModel {
         this.accountId = accountId;
     }
 
-    public String getChecking() {
-        return checking;
+    public String getAccountType() {
+        return accountType;
     }
 
-    public void setChecking(String checking) {
-        this.checking = checking;
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 
-    public String getSavings() {
-        return savings;
+    public Double getBalance() {
+        return balance;
     }
 
-    public void setSavings(String savings) {
-        this.savings = savings;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer user_id) {
-        this.userId = userId;
+    public void setBalance(Double balance) {
+        this.balance = balance;
     }
 }

@@ -11,11 +11,11 @@ public class BankRepo implements DataSourceCRUD<BankModel> {
 
     @Override
     public Integer create(BankModel bankModel) throws SQLException, IOException {
-        String sql = "INSERT INTO bank (checking, savings, user_id) VALUES (?,?,?)";
+        String sql = "INSERT INTO bank (accountType, balance) VALUES (?,?)";
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        pstmt.setString(1, bankModel.getChecking());
-        pstmt.setString(2, bankModel.getSavings());
-        pstmt.setInt(3, bankModel.getUserId());//FK
+        pstmt.setString(1, bankModel.getAccountType());
+        pstmt.setDouble(2, bankModel.getBalance());
+
 
         pstmt.executeUpdate();
         ResultSet rs = pstmt.getGeneratedKeys();
@@ -35,9 +35,8 @@ public class BankRepo implements DataSourceCRUD<BankModel> {
         BankModel bm = new BankModel();
         if(rs.next()){
             bm.setAccountId(rs.getInt("account_id"));
-            bm.setChecking(rs.getString("checking"));
-            bm.setSavings((rs.getString("savings")));
-            bm.setUserId(rs.getInt("user_id"));//FK
+            bm.setAccountType(rs.getString("accountType"));
+            bm.setBalance((rs.getDouble("balance")));
             return bm;
         }
         return null;
@@ -45,11 +44,10 @@ public class BankRepo implements DataSourceCRUD<BankModel> {
 
     @Override
     public BankModel update(BankModel bankModel) throws SQLException, IOException {
-        String sql = "UPDATE bank SET checking = ?, savings = ? WHERE account_id";
+        String sql = "UPDATE bank SET accountType = ?, balance = ? WHERE account_id";
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
-        pstmt.setString(1, bankModel.getChecking() );
-        pstmt.setString(2, bankModel.getSavings());
-        pstmt.setInt(3, bankModel.getUserId());
+        pstmt.setString(1, bankModel.getAccountType() );
+        pstmt.setDouble(2, bankModel.getBalance());
         pstmt.executeUpdate();
         //return bankModel;
 
@@ -62,8 +60,8 @@ public class BankRepo implements DataSourceCRUD<BankModel> {
             //marshal everything into the above instantiation
             //gotta get the name of the column that we are fetching which is user_id and set it with the obj
             verifiedBankModel.setAccountId(rs.getInt("account_id"));
-            verifiedBankModel.setChecking(rs.getString("checking"));
-            verifiedBankModel.setSavings(rs.getString("savings"));
+            verifiedBankModel.setAccountType(rs.getString("checking"));
+            verifiedBankModel.setBalance(rs.getDouble("balance"));
             return verifiedBankModel;
         }
         return null;
