@@ -27,7 +27,7 @@ public class Welcome extends View{
                 viewManager.navigate("Create");
                 break;
             case "2":
-                viewManager.navigate("login");
+                viewManager.navigate("Login");
                 break;
             default:
                 System.out.println("\nGoodBye........\n");

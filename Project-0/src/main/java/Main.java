@@ -10,19 +10,21 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String ...args) {
+    public static void main(String... args) {
         System.out.println("This is working?");
-        try{
+        try {
+            System.out.println("This is working!");
             //Test the connection, will print out the stack trace if it fails
             Connection conn = ConnectionManager.getConnection();
             ViewManager.getViewManager().navigate("Welcome");
             while(ViewManager.getViewManager().isRunning()) {
                 ViewManager.getViewManager().render();
-
-    } catch (SQLException | IOException e) {
+            }
+        } catch (Exception e){
             e.printStackTrace();
         }
     }
+}
 
 
 

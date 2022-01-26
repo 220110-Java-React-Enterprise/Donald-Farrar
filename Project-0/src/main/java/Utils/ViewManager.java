@@ -1,6 +1,8 @@
 package Utils;
 
-import javax.swing.text.View;
+
+import Views.View;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
