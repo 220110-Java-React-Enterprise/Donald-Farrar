@@ -8,6 +8,7 @@ public class UserModel {
     private String lName;
     private String address;
     private Integer zip;
+    private Integer accountId;
 
     //Constructor
     public UserModel() {
@@ -27,6 +28,7 @@ public class UserModel {
         this.lName = lName;
         this.address = address;
         this.zip = zip;
+        this.accountId = accountId;
     }
 
     //Getters & Setters
@@ -85,5 +87,11 @@ public class UserModel {
     public void setZip(Integer zip) {
         this.zip = zip;
     }
+    public Integer getAccountId() {
+        return accountId;
+    }
 
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
 }
