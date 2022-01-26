@@ -13,7 +13,7 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
 
     @Override
     public Integer create(UserModel userModel) throws SQLException, IOException {
-        String sql = "INSERT INTO users (userName, password, fName, lName, address, zip, account_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO users (userName, password, fName, lName, address, zip) VALUES (?, ?, ?, ?, ?, ?)";
         //CALLING THE CONNECTION ON demand INSTEAD OF CREATED THE OBJ
         PreparedStatement  pstmt = ConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         //Note that we are not adding the id because it is auto-incremented
@@ -25,7 +25,7 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
         pstmt.setString(4, userModel.getlName());
         pstmt.setString(5, userModel.getAddress());
         pstmt.setInt(6, userModel.getZip());
-        pstmt.setInt(7, userModel.getAccountId());
+        //pstmt.setInt(7, userModel.getAccountId());//FK
 
         pstmt.executeUpdate();
         //Create an obj for then below ask for the result set

@@ -8,11 +8,17 @@ public class BankModel {
     public BankModel() {
     }
 
+    public BankModel( String accountType, Double balance) {
+        this.accountType = accountType;
+        this.balance = balance;
+    }
+
     public BankModel(Integer accountId, String accountType, Double balance) {
         this.accountId = accountId;
         this.accountType = accountType;
         this.balance = balance;
     }
+
 
     public Integer getAccountId() {
         return accountId;
