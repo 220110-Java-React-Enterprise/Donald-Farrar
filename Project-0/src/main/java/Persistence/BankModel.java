@@ -12,9 +12,12 @@ public class BankModel {
     }
 
     //constructor is for testing so far
-    public BankModel(String checking, String savings) {
+
+    public BankModel(String checking, String savings, Integer user_id) {
+
         this.checking = checking;
         this.savings = savings;
+        this.userId = userId;
     }
     public BankModel(Integer accountId, String checking, String savings, Integer user_id) {
         this.accountId = accountId;
@@ -22,6 +25,8 @@ public class BankModel {
         this.savings = savings;
         this.userId = userId;
     }
+
+
 
     public Integer getAccountId() {
         return accountId;

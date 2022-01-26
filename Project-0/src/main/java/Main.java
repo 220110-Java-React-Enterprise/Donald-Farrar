@@ -17,12 +17,12 @@ public class Main {
             Connection conn = ConnectionManager.getConnection();
 
             //testing
-            UserModel testUser = new UserModel("testUser", "password");
+            UserModel testUser = new UserModel("TESTING for userID 6", "six");
             testUser.setZip(12345);
             UserRepo userRepo = new UserRepo();
             Integer newUserId = userRepo.create(testUser); //use the create method to make a newUSerID here for testing
                 System.out.println("Here =======>" + newUserId);
-            BankModel testBank = new BankModel("10K", "250k");
+            BankModel testBank = new BankModel("6K", "60k", newUserId);
             BankRepo bankRepo = new BankRepo();
             bankRepo.create(testBank);
 
