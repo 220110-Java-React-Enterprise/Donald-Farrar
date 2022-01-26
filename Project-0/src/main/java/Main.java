@@ -16,15 +16,15 @@ public class Main {
             //Test the connection, will print out the stack trace if it fails
             Connection conn = ConnectionManager.getConnection();
 
-            //testing
-            UserModel testUser = new UserModel("TESTING for userID 6", "six");
-            testUser.setZip(12345);
-            UserRepo userRepo = new UserRepo();
-            Integer newUserId = userRepo.create(testUser); //use the create method to make a newUSerID here for testing
-                System.out.println("Here =======>" + newUserId);
-            BankModel testBank = new BankModel("6K", "60k", newUserId);
-            BankRepo bankRepo = new BankRepo();
-            bankRepo.create(testBank);
+//            //testing
+//            UserModel testUser = new UserModel("TESTING for userID 101", "ONO-ONO");
+//            testUser.setZip(12345);
+//            UserRepo userRepo = new UserRepo();
+//            Integer newUserId = userRepo.create(testUser); //use the create method to make a newUSerID here for testing
+//                System.out.println("Here =======>" + newUserId);
+//            BankModel testBank = new BankModel("6K", ".5k");
+//            BankRepo bankRepo = new BankRepo();
+//            bankRepo.create(testBank);
 
 
         } catch (Exception e){
