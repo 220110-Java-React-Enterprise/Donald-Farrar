@@ -22,7 +22,7 @@ public class BankRepo implements DataSourceCRUD<BankModel> {
         if(rs.next()){
             return rs.getInt(1);
         }
-        return null;
+        return -1;
     }
 
     @Override
