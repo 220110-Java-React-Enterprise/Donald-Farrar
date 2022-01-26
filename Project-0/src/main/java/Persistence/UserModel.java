@@ -8,6 +8,7 @@ public class UserModel {
     private String lName;
     private String address;
     private Integer zip;
+    private Integer accountId;//FK
 
     //Constructor
     public UserModel() {
@@ -19,7 +20,7 @@ public class UserModel {
         this.password = password;
     }
 
-    public UserModel(Integer userId, String userName, String password, String fName, String lName, String address, Integer zip) {
+    public UserModel(Integer userId, String userName, String password, String fName, String lName, String address, Integer zip, Integer accountId) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
@@ -27,6 +28,7 @@ public class UserModel {
         this.lName = lName;
         this.address = address;
         this.zip = zip;
+        this.accountId = accountId;
     }
 
     //Getters & Setters
@@ -84,6 +86,14 @@ public class UserModel {
 
     public void setZip(Integer zip) {
         this.zip = zip;
+    }
+
+    public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
     }
 
 }
