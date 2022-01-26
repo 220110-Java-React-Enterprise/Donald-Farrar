@@ -1,6 +1,8 @@
 package Persistence;
 
 import Utils.ConnectionManager;
+import Utils.CustomLinkedList;
+import Utils.CustomListInterface;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -73,5 +75,26 @@ public class BankRepo implements DataSourceCRUD<BankModel> {
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
         pstmt.setInt(1, id);
         pstmt.executeUpdate();
+    }
+
+    //so we can return all the accounts for the current user
+    public CustomListInterface<BankModel> getAllItemsByUserId(Integer id) throws SQLException, IOException {
+        String sql = "SELECT * FROM items WHERE user_id = ?";
+        PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
+
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();
+        CustomListInterface<BankModel> itemsList = new CustomLinkedList<>();
+
+        while (rs.next()) {
+
+            BankModel item = new BankModel();
+            item.setAccountId(rs.getInt("account_id"));
+            item.setAccountType(rs.getString("accountType"));
+            item.setBalance(rs.getDouble("balance"));
+            itemsList.add(item);
+
+        }
+        return itemsList;
     }
 }
