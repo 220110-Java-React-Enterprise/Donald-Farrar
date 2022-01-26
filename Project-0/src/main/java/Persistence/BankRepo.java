@@ -79,22 +79,21 @@ public class BankRepo implements DataSourceCRUD<BankModel> {
 
     //so we can return all the accounts for the current user
     public CustomListInterface<BankModel> getAllItemsByUserId(Integer id) throws SQLException, IOException {
-        String sql = "SELECT * FROM items WHERE user_id = ?";
+        String sql = "SELECT * FROM bank WHERE user_id = ?";
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
 
         pstmt.setInt(1, id);
         ResultSet rs = pstmt.executeQuery();
-        CustomListInterface<BankModel> itemsList = new CustomLinkedList<>();
+        CustomListInterface<BankModel> bankModel = new CustomLinkedList<>();
 
         while (rs.next()) {
 
-            BankModel item = new BankModel();
-            item.setAccountId(rs.getInt("account_id"));
-            item.setAccountType(rs.getString("accountType"));
-            item.setBalance(rs.getDouble("balance"));
-            itemsList.add(item);
-
+            BankModel bank = new BankModel();
+            bank.setAccountId(rs.getInt("account_id"));
+            bank.setAccountType(rs.getString("accountType"));
+            bank.setBalance(rs.getDouble("balance"));
+            bankModel.add(bank);
         }
-        return itemsList;
+        return bankModel;
     }
 }
