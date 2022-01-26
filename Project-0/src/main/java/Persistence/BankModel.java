@@ -11,6 +11,11 @@ public class BankModel {
     public BankModel() {
     }
 
+    //constructor is for testing so far
+    public BankModel(String checking, String savings) {
+        this.checking = checking;
+        this.savings = savings;
+    }
     public BankModel(Integer accountId, String checking, String savings, Integer user_id) {
         this.accountId = accountId;
         this.checking = checking;
