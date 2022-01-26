@@ -8,14 +8,13 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class Main {
 
+public class Main {
     public static void main(String ...args) {
         System.out.println("This is working?");
         try{
             //Test the connection, will print out the stack trace if it fails
             Connection conn = ConnectionManager.getConnection();
-
 //            //testing
 //            UserModel testUser = new UserModel("TESTING for userID 101", "ONO-ONO");
 //            testUser.setZip(12345);
@@ -25,7 +24,6 @@ public class Main {
 //            BankModel testBank = new BankModel("6K", ".5k");
 //            BankRepo bankRepo = new BankRepo();
 //            bankRepo.create(testBank);
-
 
         } catch (Exception e){
             e.printStackTrace();

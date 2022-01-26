@@ -20,6 +20,13 @@ public class UserModel {
         this.password = password;
     }
 
+    //this contructors helps with the authentication
+    public UserModel(Integer userId, String userName, String password) {
+        this.userId = userId;
+        this.userName = userName;
+        this.password = password;
+    }
+
     public UserModel(Integer userId, String userName, String password, String fName, String lName, String address, Integer zip) {
         this.userId = userId;
         this.userName = userName;
