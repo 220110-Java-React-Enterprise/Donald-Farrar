@@ -52,7 +52,7 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
             user.setfName(rs.getString("fName"));
             user.setlName(rs.getString("lName"));
             user.setAddress(rs.getString("address"));
-            user.setUserId(rs.getInt("zip"));
+            user.setZip(rs.getInt("zip"));
             return user;
         } else {
             return null;
