@@ -9,7 +9,25 @@ import java.io.IOException;
 import java.net.ConnectException;
 import java.sql.*;
 
-public class BankRepo implements DataSourceCRUD<BankModel> {
+public class BankRepo implements BankCRUD<BankModel> {
+
+    @Override
+    public CustomListInterface<BankModel> getAccounts(int user_id) throws SQLException, IOException {
+        String sql = "SELECT * FROM bank WHERE user_id = ?";
+        PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
+        pstmt.setInt(1, user_id);
+        ResultSet rs = pstmt.executeQuery();
+
+        CustomListInterface<BankModel> list = new CustomLinkedList<>();
+        while(rs.next()){
+            BankModel bm = new BankModel();
+            bm.setAccountId(rs.getInt("account_id"));
+            bm.setAccountType(rs.getString("accountType"));
+            bm.setBalance((rs.getDouble("balance")));
+            list.add(bm);
+        }
+        return list;
+    }
 
     @Override
     public Integer create(BankModel bankModel) throws SQLException, IOException {
