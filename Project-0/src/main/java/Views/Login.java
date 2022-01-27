@@ -37,6 +37,6 @@ public class Login extends View{
         //this will have them be logged in when registered instead of reverting to the login screen
         DataStore.setCurrentUser(user);
         //after we successfully created the user navigate to the next view
-        viewManager.navigate("Options");
+        viewManager.navigate("Accounts");
     }
 }

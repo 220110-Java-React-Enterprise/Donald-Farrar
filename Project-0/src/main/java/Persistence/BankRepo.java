@@ -31,7 +31,7 @@ public class BankRepo implements BankCRUD<BankModel> {
 
     @Override
     public Integer create(BankModel bankModel) throws SQLException, IOException {
-        String sql = "INSERT INTO bank (accountType, balance) VALUES (?,?)";
+        String sql = "INSERT INTO bank (accountType, balance, user_id) VALUES (?,?, ?)";
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         pstmt.setString(1, bankModel.getAccountType());
         pstmt.setDouble(2, bankModel.getBalance());
