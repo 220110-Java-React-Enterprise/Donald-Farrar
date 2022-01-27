@@ -26,7 +26,18 @@ public class Create extends View{
         System.out.println("Enter new password: ");
         String password = viewManager.getScanner().nextLine();
 
-        UserModel newUser = new UserModel(username, password);
+        System.out.println("Enter first name: ");
+        String fName = viewManager.getScanner().nextLine();
+        System.out.println("Enter last name: ");
+        String lName = viewManager.getScanner().nextLine();
+        System.out.println("Enter address: ");
+        String address = viewManager.getScanner().nextLine();
+        System.out.println("Enter zip: ");
+        int zip = Integer.parseInt(viewManager.getScanner().nextLine());
+
+
+
+        UserModel newUser = new UserModel(username, password, fName, lName, address, zip);
         UserRepo repo = new UserRepo();
         repo.create(newUser);
 
@@ -34,7 +45,7 @@ public class Create extends View{
         DataStore.setCurrentUser(newUser);
 
         //after we successfully created the user navigate to the next view
-        viewManager.navigate("list");
+        viewManager.navigate("Options");
 
     }
 }

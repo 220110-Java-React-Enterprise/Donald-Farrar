@@ -25,9 +25,8 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
         pstmt.setString(4, userModel.getlName());
         pstmt.setString(5, userModel.getAddress());
         pstmt.setInt(6, userModel.getZip());
-        //pstmt.setInt(7, userModel.getAccountId());//FK
 
-        pstmt.executeUpdate();
+        pstmt.execute();
         //Create an obj for then below ask for the result set
         //this one is getGenerateKeys, because of the second argument above
         ResultSet rs = pstmt.getGeneratedKeys();
@@ -36,25 +35,23 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
     }
 
     @Override
-    public UserModel read(Integer id) throws SQLException, IOException {
+    public UserModel read(String userName) throws SQLException, IOException {
         //this can never return more than one thing because the user_id is unique
         String sql = "SELECT * FROM users WHERE user_id = ?";
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
-        pstmt.setInt(1, id);
+        pstmt.setString(1, userName);
 
         ResultSet rs = pstmt.executeQuery();
         //if we have the thing marshal it into a UserModel obj //linkedList
         UserModel user = new UserModel();
         if(rs.next()){
             //if there is one now we read the user_id
-            user.setUserId(rs.getInt("user_id"));
             user.setUserName(rs.getString("userName"));
             user.setPassword(rs.getString("password"));
             user.setfName(rs.getString("fName"));
             user.setlName(rs.getString("lName"));
             user.setAddress(rs.getString("address"));
             user.setZip(rs.getInt("zip"));
-            user.setAccountId(rs.getInt("account_id"));
             return user;
         } else {
             return null;
@@ -73,14 +70,13 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
         pstmt.setString(4, userModel.getlName());
         pstmt.setString(5, userModel.getAddress());
         pstmt.setInt(6, userModel.getZip());
-        pstmt.setInt(7, userModel.getAccountId());//FK
 
         pstmt.executeUpdate();
         //verify the data did get back correctly.
         String verify = "SELECT * FROM users WHERE user_id = ?";
         //second prepared statement
         PreparedStatement verifyStat = ConnectionManager.getConnection().prepareStatement(verify);
-        pstmt.setInt(1, userModel.getUserId());
+        //pstmt.setInt(1, userModel.getUserId());
         //compare this with the other times you have used ResultSet in your CRUD code above
         ResultSet rs = verifyStat.executeQuery();
 
@@ -88,7 +84,7 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
             UserModel verifiedUserModel = new UserModel();
             //marshal everything into the above instantiation
             //gotta get the name of the column that we are fetching which is user_id and set it with the obj
-            verifiedUserModel.setUserId(rs.getInt("user_id"));
+            //verifiedUserModel.setUserId(rs.getInt("user_id"));
             verifiedUserModel.setUserName(rs.getString("userName"));
             verifiedUserModel.setPassword(rs.getString("password"));
             verifiedUserModel.setfName(rs.getString("fName"));
@@ -119,7 +115,14 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
         ResultSet rs = pstmt.executeQuery();
         //this if/statement implys that if the password that was inputted matching the one in the db && there is a next return true
         if(rs.next() && rs.getString("password").equals(password)){
-            return new UserModel(rs.getInt("user_id"), rs.getString("username"), rs.getString("password"));
+            return new UserModel(
+                    rs.getInt("user_id"),
+                    rs.getString("username"),
+                    rs.getString("password"),
+                    rs.getString("fName"),
+                    rs.getString("lName"),
+                    rs.getString("address"),
+                    rs.getInt("zip"));
         }
         //if we don't have a next that means username was not found, return false
         return null;

@@ -14,25 +14,14 @@ public class UserModel {
     public UserModel() {
     }
 
-    public UserModel(String userName, String password) {
+    public UserModel(String userName, String password, String fName, String lName, String address, Integer zip) {
         this.userName = userName;
         this.password = password;
-
+        this.fName = fName;
+        this.lName = lName;
+        this.address = address;
+        this.zip = zip;
     }
-    //this constructor is for the authenticate method on the UserRepo for login access
-    public UserModel(String userName, String password, Integer accountId) {
-        this.userName = userName;
-        this.password = password;
-        this.accountId = accountId;
-    }
-
-    //this contructors helps with the authentication
-    public UserModel(Integer userId, String userName, String password) {
-        this.userId = userId;
-        this.userName = userName;
-        this.password = password;
-    }
-
     public UserModel(Integer userId, String userName, String password, String fName, String lName, String address, Integer zip) {
         this.userId = userId;
         this.userName = userName;
@@ -41,9 +30,7 @@ public class UserModel {
         this.lName = lName;
         this.address = address;
         this.zip = zip;
-        this.accountId = accountId;
     }
-
     //Getters & Setters
     public Integer getUserId() {
         return userId;
@@ -52,7 +39,6 @@ public class UserModel {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
     public String getUserName() {
         return userName;
     }

@@ -4,6 +4,7 @@ import Persistence.UserModel;
 import Persistence.UserRepo;
 import Utils.ConnectionManager;
 import Utils.ViewManager;
+import Views.*;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,9 +14,15 @@ public class Main {
     public static void main(String... args) {
         System.out.println("This is working?");
         try {
-            System.out.println("This is working!");
             //Test the connection, will print out the stack trace if it fails
             Connection conn = ConnectionManager.getConnection();
+            ViewManager viewManager = ViewManager.getViewManager();
+            viewManager.registerView(new Welcome());
+            viewManager.registerView(new Create());
+            viewManager.registerView(new Login());
+            viewManager.registerView(new Options());
+            viewManager.registerView(new Accounts());
+            //Welcome screen should be the first menu the user comes to
             ViewManager.getViewManager().navigate("Welcome");
             while(ViewManager.getViewManager().isRunning()) {
                 ViewManager.getViewManager().render();

@@ -3,6 +3,7 @@ package Persistence;
 import Utils.ConnectionManager;
 import Utils.CustomLinkedList;
 import Utils.CustomListInterface;
+import Utils.DataStore;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -10,14 +11,13 @@ import java.sql.*;
 
 public class BankRepo implements DataSourceCRUD<BankModel> {
 
-
     @Override
     public Integer create(BankModel bankModel) throws SQLException, IOException {
         String sql = "INSERT INTO bank (accountType, balance) VALUES (?,?)";
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         pstmt.setString(1, bankModel.getAccountType());
         pstmt.setDouble(2, bankModel.getBalance());
-
+        pstmt.setInt(3, DataStore.getCurrentUser().getUserId());
 
         pstmt.executeUpdate();
         ResultSet rs = pstmt.getGeneratedKeys();
@@ -28,10 +28,10 @@ public class BankRepo implements DataSourceCRUD<BankModel> {
     }
 
     @Override
-    public BankModel read(Integer id) throws SQLException, IOException {
+    public BankModel read(String id) throws SQLException, IOException {
         String sql = "SELECT * FROM bank WHERE account_id = ?";
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
-        pstmt.setInt(1, id);
+        pstmt.setString(1, id);
         ResultSet rs = pstmt.executeQuery();
 
         BankModel bm = new BankModel();
