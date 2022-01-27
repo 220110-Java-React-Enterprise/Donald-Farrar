@@ -64,35 +64,23 @@ public class BankRepo implements BankCRUD<BankModel> {
 
     @Override
     public BankModel update(BankModel bankModel) throws SQLException, IOException {
-        String sql = "UPDATE bank SET accountType = ?, balance = ? WHERE account_id";
+        String sql = "UPDATE bank SET accountType = ?, balance = ? WHERE account_id = ?";
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
         pstmt.setString(1, bankModel.getAccountType() );
         pstmt.setDouble(2, bankModel.getBalance());
+        pstmt.setInt(3, bankModel.getAccountId());
         pstmt.executeUpdate();
-        //return bankModel;
-
-        String verify = "SELECT * FROM bank WHERE account_id = ?";
-        PreparedStatement verifyStat = ConnectionManager.getConnection().prepareStatement(verify);
-        pstmt.setInt(1,bankModel.getAccountId());
-        ResultSet rs = verifyStat.executeQuery();
-        if(rs.next()){
-            BankModel verifiedBankModel = new BankModel();
-            //marshal everything into the above instantiation
-            //gotta get the name of the column that we are fetching which is user_id and set it with the obj
-            verifiedBankModel.setAccountId(rs.getInt("account_id"));
-            verifiedBankModel.setAccountType(rs.getString("checking"));
-            verifiedBankModel.setBalance(rs.getDouble("balance"));
-            return verifiedBankModel;
-        }
-        return null;
+//        //return bankModel;
+//
+      return null;
     }
 
     @Override
     public void delete(Integer id) throws SQLException, IOException {
-        String sql = "DELETE FROM user account_id = ?";
+        String sql = "DELETE FROM bank WHERE account_id = ?";
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
         pstmt.setInt(1, id);
-        pstmt.executeUpdate();
+        pstmt.execute();
     }
 
     //so we can return all the accounts for the current user

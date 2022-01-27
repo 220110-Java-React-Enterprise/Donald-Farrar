@@ -22,6 +22,8 @@ public class Main {
             viewManager.registerView(new Login());
             viewManager.registerView(new Options());
             viewManager.registerView(new Accounts());
+            viewManager.registerView(new Deposit());
+            viewManager.registerView(new Withdraw());
             //Welcome screen should be the first menu the user comes to
             ViewManager.getViewManager().navigate("Welcome");
             while(ViewManager.getViewManager().isRunning()) {

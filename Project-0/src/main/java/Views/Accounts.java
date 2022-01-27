@@ -45,7 +45,7 @@ public class Accounts extends View {
             bm.setBalance(0.0);
             bankrepo.create(bm);
 
-        } else if(input.equals(count+2)){
+        } else if(input.equals((count+2)+"")){
             System.out.println("Good Bye!");
             viewManager.quit();
         } else {
