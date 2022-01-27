@@ -16,7 +16,10 @@ public class Options extends View{
     }
     @Override
     public void renderView() throws SQLException, IOException {
-        System.out.println("Current Balance: " + DataStore.getCurrentAccount().getBalance());
+        System.out.println("====================>");
+        //viewManager.navigate("Accounts");
+        //System.out.println("Current Balance: " + DataStore.getCurrentAccount().getBalance());
+        System.out.println("<=========================");
         System.out.println("Please select from the following: \n" +
                 "=================\n" +
                 "1) Withdraw \n" +

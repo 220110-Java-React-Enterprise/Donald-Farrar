@@ -28,6 +28,7 @@ public class Create extends View{
 
         System.out.println("Enter first name: ");
         String fName = viewManager.getScanner().nextLine();
+        System.out.println();
         System.out.println("Enter last name: ");
         String lName = viewManager.getScanner().nextLine();
         System.out.println("Enter address: ");
@@ -37,15 +38,16 @@ public class Create extends View{
 
 
 
+
         UserModel newUser = new UserModel(username, password, fName, lName, address, zip);
         UserRepo repo = new UserRepo();
         repo.create(newUser);
 
         //this will have them be logged in when registered instead of reverting to the login screen
-        DataStore.setCurrentUser(newUser);
+        DataStore.setCurrentUser(repo.read(username));
 
         //after we successfully created the user navigate to the next view
-        viewManager.navigate("Options");
+        viewManager.navigate("Accounts");
 
     }
 }

@@ -26,7 +26,7 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
         pstmt.setString(5, userModel.getAddress());
         pstmt.setInt(6, userModel.getZip());
 
-        pstmt.execute();
+        pstmt.executeUpdate();
         //Create an obj for then below ask for the result set
         //this one is getGenerateKeys, because of the second argument above
         ResultSet rs = pstmt.getGeneratedKeys();
@@ -37,22 +37,23 @@ public class UserRepo implements DataSourceCRUD<UserModel>{
     @Override
     public UserModel read(String userName) throws SQLException, IOException {
         //this can never return more than one thing because the user_id is unique
-        String sql = "SELECT * FROM users WHERE user_id = ?";
+        String sql = "SELECT * FROM users WHERE userName = ?";
         PreparedStatement pstmt = ConnectionManager.getConnection().prepareStatement(sql);
         pstmt.setString(1, userName);
 
         ResultSet rs = pstmt.executeQuery();
         //if we have the thing marshal it into a UserModel obj //linkedList
-        UserModel user = new UserModel();
+        //UserModel user = new UserModel();
         if(rs.next()){
             //if there is one now we read the user_id
-            user.setUserName(rs.getString("userName"));
-            user.setPassword(rs.getString("password"));
-            user.setfName(rs.getString("fName"));
-            user.setlName(rs.getString("lName"));
-            user.setAddress(rs.getString("address"));
-            user.setZip(rs.getInt("zip"));
-            return user;
+            return new UserModel(
+                    rs.getInt("user_id"),
+                    rs.getString("username"),
+                    rs.getString("password"),
+                    rs.getString("fName"),
+                    rs.getString("lName"),
+                    rs.getString("address"),
+                    rs.getInt("zip"));
         } else {
             return null;
         }

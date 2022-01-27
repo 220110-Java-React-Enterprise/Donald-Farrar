@@ -24,7 +24,10 @@ public class Accounts extends View {
 
         BankRepo bankrepo = new BankRepo();
 
-        CustomListInterface<BankModel> listOfAccounts = bankrepo.getAccounts(DataStore.getCurrentUser().getUserId());
+
+     CustomListInterface<BankModel> listOfAccounts = bankrepo.getAccounts(DataStore.getCurrentUser().getUserId());
+        //CustomLinkedList<BankModel> listOfAccounts = (CustomLinkedList<BankModel>) bankrepo.getAccounts(DataStore.getCurrentUser().getUserId());
+
         int count = 0;
 
        if(listOfAccounts.size() > 0){
