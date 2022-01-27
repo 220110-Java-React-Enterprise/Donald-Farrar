@@ -1,6 +1,11 @@
 package Views;
 
+import Persistence.BankModel;
+import Persistence.BankRepo;
+import Utils.DataStore;
 import Utils.ViewManager;
+
+import javax.xml.crypto.Data;
 
 public class Options extends View{
     public Options() {
@@ -9,7 +14,7 @@ public class Options extends View{
     }
     @Override
     public void renderView() {
-
+        System.out.println("Current Balance: " + DataStore.getCurrentAccount().getBalance());
         System.out.println("Please select from the following: \n" +
                 "=================\n" +
                 "1) Withdraw \n" +
@@ -17,7 +22,6 @@ public class Options extends View{
                 "===================\n");
 
         String input =  viewManager.getScanner().nextLine();
-
 
         switch(input) {
             case "1":

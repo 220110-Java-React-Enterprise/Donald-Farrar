@@ -1,5 +1,7 @@
 package Views;
 
+import Persistence.BankRepo;
+import Utils.DataStore;
 import Utils.ViewManager;
 
 public class Deposit extends Options {
@@ -13,33 +15,14 @@ public class Deposit extends Options {
 
     @Override
     public void renderView() {
-        System.out.println();
-        String input = viewManager.getScanner().nextLine();
+        BankRepo bankrepo = new BankRepo();
 
-        //implement currency money here
-        switch(input) {
-            case "1":
-                System.out.println();
-                break;
-            case "5":
-                System.out.println();
-                break;
-            case "10":
-                System.out.println();
-                break;
+        System.out.println("How much would you like to deposit: ");
+        double input = Double.parseDouble(viewManager.getScanner().nextLine());
 
-            case "20":
-                System.out.println();
-                break;
-            case "50":
-                System.out.println();
-                break;
-            case "100":
-                System.out.println();
-                break;
-            default:
-                System.out.println("Enter valid credentials....");
-                break;
+        if(input >= 0){
+            DataStore.getCurrentAccount().getBalance()
+            bankrepo.update();
         }
     }
 }

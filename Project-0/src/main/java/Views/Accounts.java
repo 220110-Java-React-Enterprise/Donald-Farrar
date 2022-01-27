@@ -25,12 +25,15 @@ public class Accounts extends View {
         BankRepo bankrepo = new BankRepo();
 
         CustomListInterface<BankModel> listOfAccounts = bankrepo.getAccounts(DataStore.getCurrentUser().getUserId());
+        int count = 0;
 
        if(listOfAccounts.size() > 0){
-           for (int count = 0; count < listOfAccounts.size(); count++) {
+           for (count = 0; count < listOfAccounts.size(); count++) {
                System.out.println(count+2 + ") " + listOfAccounts.get(count).getAccountType());
            }
         }
+
+       System.out.println(count+2 + ") log out...." );
 
 
         String input = viewManager.getScanner().nextLine();
@@ -42,6 +45,12 @@ public class Accounts extends View {
             bm.setBalance(0.0);
             bankrepo.create(bm);
 
+        } else if(input.equals(count+2)){
+            System.out.println("Good Bye!");
+            viewManager.quit();
+        } else {
+            DataStore.setCurrentAccount(listOfAccounts.get(Integer.parseInt(input) - 2));
+            viewManager.navigate("Options");
         }
     }
 }
