@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String... args) {
-        System.out.println("This is working?");
+//        System.out.println("This is working?");
         try {
             //Test the connection, will print out the stack trace if it fails
             Connection conn = ConnectionManager.getConnection();

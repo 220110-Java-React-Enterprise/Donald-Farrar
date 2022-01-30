@@ -1,0 +1,27 @@
+CREATE TABLE users (
+user_id INT AUTO_INCREMENT,
+userName varchar(100) UNIQUE,
+password varchar(100),
+fName varchar(50),
+lName varchar(50),
+address varchar(250),
+zip int(5),
+CONSTRAINT users_pk PRIMARY KEY (user_id)
+);
+
+CREATE TABLE bank (
+account_id INT AUTO_INCREMENT,
+accountType varchar (15),
+balance DECIMAL,
+user_id int,
+CONSTRAINT account_pk PRIMARY KEY (account_id),
+CONSTRAINT account_id_fk FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
+drop table users;
+drop table bank;
+SELECT * FROM users;
+SELECT * FROM bank;
+
+
+
