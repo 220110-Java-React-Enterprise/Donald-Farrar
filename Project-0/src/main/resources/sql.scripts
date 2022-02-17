@@ -23,5 +23,10 @@ drop table bank;
 SELECT * FROM users;
 SELECT * FROM bank;
 
+//change password manually
+set password = PASSWORD('!password123')
+
+
+
 
 
